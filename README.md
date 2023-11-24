@@ -3,11 +3,11 @@
 ### Usage
 
 ```sh
-yarn add nft-meta-parser
+yarn add @skeynetwork/nft-meta-parser
 ```
 
 ```typescript
-import { parse, serialize } from 'nft-meta-parser'
+import { parse, serialize } from '@skeynetwork/nft-meta-parser'
 
 console.log(parse('s01_3K9nvpwZaPYkSeY1XPegSQZvX4q8QnC6vT1_1700750378746'))
 
