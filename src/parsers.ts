@@ -2,7 +2,7 @@ import { ADDRESS_REGEX, CID_REGEX, UUID_REGEX } from './constants'
 import type { Metadata } from './types'
 import { tryParseJSON } from './utils'
 
-export type ParserFunc = (src: string) => Metadata | null
+export type ParserFunc = (src: string) => Metadata['data'] | null
 
 export const skeyNetworkDeviceKeyV1Parser: ParserFunc = (src) => {
   const regex = new RegExp(`^${ADDRESS_REGEX}_\\d{1,16}$`)
@@ -10,28 +10,14 @@ export const skeyNetworkDeviceKeyV1Parser: ParserFunc = (src) => {
 
   const [deviceAddress, validTo] = src.split('_')
 
-  return {
-    base: {
-      project: 'skey-network',
-      type: 'device-key',
-      version: 1,
-    },
-    data: { deviceAddress, validTo: Number(validTo) },
-  }
+  return { deviceAddress, validTo: Number(validTo) }
 }
 
 export const go2nftTokenV1Parser: ParserFunc = (src) => {
   const regex = new RegExp(`^${CID_REGEX}$`)
   if (!regex.test(src)) return null
 
-  return {
-    base: {
-      project: 'go2nft',
-      type: 'token',
-      version: 1,
-    },
-    data: { cid: src },
-  }
+  return { cid: src }
 }
 
 export const skeyTixTicketV1Parser: ParserFunc = (src) => {
@@ -44,16 +30,9 @@ export const skeyTixTicketV1Parser: ParserFunc = (src) => {
     rest.length === 1 && rest[0] === 'NOMETA' ? null : rest.join('_')
 
   return {
-    base: {
-      project: 'skey-tix',
-      type: 'ticket',
-      version: 1,
-    },
-    data: {
-      issuer,
-      globalId: Number(globalId),
-      meta: additional,
-    },
+    issuer,
+    globalId: Number(globalId),
+    meta: additional,
   }
 }
 
@@ -70,15 +49,8 @@ export const skeyTixPoapV1Parser: ParserFunc = (src) => {
   if (!new RegExp(CID_REGEX).test(cid)) return null
 
   return {
-    base: {
-      project: 'skey-tix',
-      type: 'poap',
-      version: 1,
-    },
-    data: {
-      description: lines.join('\n'),
-      cid,
-    },
+    description: lines.join('\n'),
+    cid,
   }
 }
 
@@ -90,14 +62,7 @@ export const skeyBoxCertV1Parser: ParserFunc = (src) => {
   if (!obj.companyName || typeof obj.companyName !== 'string') return null
 
   return {
-    base: {
-      project: 'skey-box',
-      type: 'cert',
-      version: 1,
-    },
-    data: {
-      uid: obj.uid,
-      companyName: obj.companyName,
-    },
+    uid: obj.uid,
+    companyName: obj.companyName,
   }
 }

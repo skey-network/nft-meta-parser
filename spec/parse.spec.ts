@@ -170,7 +170,7 @@ const cases: TestCase[] = [
   },
 ]
 
-describe('Parse test cases', () => {
+describe('Parse', () => {
   for (const test of cases) {
     it(test.name, () => {
       expect(parse(test.input)).eql(test.expected)

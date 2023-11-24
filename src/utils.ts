@@ -16,3 +16,14 @@ export const tryParseJSON = (obj: any) => {
     return null
   }
 }
+
+export const replaceText = (
+  text: string,
+  replacers: ((text: string) => string)[],
+) => {
+  for (const func of replacers) {
+    text = func(text)
+  }
+
+  return text
+}

@@ -1,15 +1,15 @@
-interface BasePrefix {
+export interface BasePrefix {
   project: string
   type: string
   version: number
 }
 
-interface BaseMeta {
+export interface BaseMeta {
   base: BasePrefix
   data: Record<string, any>
 }
 
-// s01_<address>_<timestamp>
+// s01_<address>_<timestamp> OR <address>_<timestamp>
 export interface SkeyNetworkDeviceKeyV1Meta extends BaseMeta {
   base: {
     project: 'skey-network'
@@ -22,7 +22,7 @@ export interface SkeyNetworkDeviceKeyV1Meta extends BaseMeta {
   }
 }
 
-// g01_<cid>
+// g01_<cid> OR 1_<cid>
 export interface Go2NFTTokenV1Meta extends BaseMeta {
   base: {
     project: 'go2nft'
@@ -34,7 +34,7 @@ export interface Go2NFTTokenV1Meta extends BaseMeta {
   }
 }
 
-// tt1_<issuer>_<globalId>_<metadata>
+// tt1_<issuer>_<globalId>_<metadata | NOMETA>
 export interface SkeyTixTicketV1Meta extends BaseMeta {
   base: {
     project: 'skey-tix'
@@ -61,7 +61,7 @@ export interface SkeyTixPoapV1Meta extends BaseMeta {
   }
 }
 
-// b01_<json>
+// b01_<json(uid,companyName)>
 export interface SkeyBoxCertV1Meta extends BaseMeta {
   base: {
     project: 'skey-box'

@@ -26,7 +26,7 @@ export const skeyTixTicketV1Serializer: SerializerFunc<SkeyTixTicketV1Meta> = (
 ) => {
   const globalId = data.globalId.toString().padStart(18, '0')
 
-  return `tt1_${data.issuer}_${globalId}_${data.meta}`
+  return `tt1_${data.issuer}_${globalId}_${data.meta || 'NOMETA'}`
 }
 
 export const skeyTixPoapV1Serializer: SerializerFunc<SkeyTixPoapV1Meta> = (
