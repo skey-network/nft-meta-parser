@@ -1,11 +1,9 @@
-export interface BasePrefix {
-  project: string
-  type: string
-  version: number
-}
-
 export interface BaseMeta {
-  base: BasePrefix
+  base: {
+    project: string
+    type: string
+    version: number
+  }
   data: Record<string, any>
 }
 

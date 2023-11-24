@@ -1,6 +1,6 @@
 import * as parsers from './parsers'
 import * as serializers from './serializers'
-import { BasePrefix, Metadata } from './types'
+import { Metadata } from './types'
 
 export interface SchemaItem<T extends Metadata = Metadata> {
   prefix: string
@@ -65,7 +65,7 @@ export const SCHEMAS: Readonly<SchemaItem[]> = Object.freeze([
 export const getSchemaByPrefix = (prefix: string) =>
   SCHEMAS.find((s) => s.prefix === prefix) ?? null
 
-export const getSchemaByBase = (search: BasePrefix) =>
+export const getSchemaByBase = (search: Metadata['base']) =>
   SCHEMAS.find(
     ({ base }) =>
       base.project === search.project &&

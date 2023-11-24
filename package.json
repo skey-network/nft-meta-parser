@@ -10,7 +10,8 @@
     "dev": "ts-node src/main.ts",
     "build": "rm -rf dist && tsc",
     "test": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'spec/**/*.spec.ts'",
-    "prepare": "npm run build"
+    "readme:prepare": "ts-node scripts/prepareReadme.ts",
+    "prepare": "npm run build && npm run readme:prepare"
   },
   "keywords": [],
   "author": "",
