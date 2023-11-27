@@ -74,7 +74,6 @@ const cases: TestCase[] = [
   },
   {
     name: 'skey tix poap',
-
     input: {
       base: {
         project: 'skey-tix',
@@ -82,12 +81,10 @@ const cases: TestCase[] = [
         version: 1,
       },
       data: {
-        description: 'Lorem ipsum',
         cid: 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
       },
     },
-    expected:
-      'tp1_Lorem ipsum\nipfs:QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
+    expected: 'tp1_QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
   },
   {
     name: 'undefined',

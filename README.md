@@ -131,7 +131,7 @@ export interface SkeyTixTicketV1Meta extends BaseMeta {
   }
 }
 
-// tp1_<text>\nipfs:<cid>
+// tp1_<cid>
 export interface SkeyTixPoapV1Meta extends BaseMeta {
   base: {
     project: 'skey-tix'
@@ -139,7 +139,6 @@ export interface SkeyTixPoapV1Meta extends BaseMeta {
     version: 1
   }
   data: {
-    description: string
     cid: string
   }
 }

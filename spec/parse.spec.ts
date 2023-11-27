@@ -102,8 +102,7 @@ const cases: TestCase[] = [
   },
   {
     name: 'skey tix poap',
-    input:
-      'tp1_Lorem ipsum\nipfs:QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
+    input: 'tp1_QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
     expected: {
       base: {
         project: 'skey-tix',
@@ -111,23 +110,6 @@ const cases: TestCase[] = [
         version: 1,
       },
       data: {
-        description: 'Lorem ipsum',
-        cid: 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
-      },
-    },
-  },
-  {
-    name: 'skey tix poap with more new lines',
-    input:
-      'tp1_\n\nLorem \r\n  ips\num\nipfs:QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR\n\n',
-    expected: {
-      base: {
-        project: 'skey-tix',
-        type: 'poap',
-        version: 1,
-      },
-      data: {
-        description: 'Lorem \r\n  ips\num',
         cid: 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
       },
     },

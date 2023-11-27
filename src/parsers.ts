@@ -37,21 +37,10 @@ export const skeyTixTicketV1Parser: ParserFunc = (src) => {
 }
 
 export const skeyTixPoapV1Parser: ParserFunc = (src) => {
-  src = src.replace(/^\s+|\s+$/g, '') // Trim new lines
+  const regex = new RegExp(`^${CID_REGEX}$`)
+  if (!regex.test(src)) return null
 
-  const lines = src.split('\n')
-  if (lines.length < 2) return null
-
-  const last = lines.pop()!
-  const [ipfsPrefix, cid] = [last.slice(0, 5), last.slice(5)]
-
-  if (ipfsPrefix !== 'ipfs:') return null
-  if (!new RegExp(CID_REGEX).test(cid)) return null
-
-  return {
-    description: lines.join('\n'),
-    cid,
-  }
+  return { cid: src }
 }
 
 export const skeyBoxCertV1Parser: ParserFunc = (src) => {

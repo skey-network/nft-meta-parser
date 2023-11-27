@@ -32,7 +32,7 @@ export const skeyTixTicketV1Serializer: SerializerFunc<SkeyTixTicketV1Meta> = (
 export const skeyTixPoapV1Serializer: SerializerFunc<SkeyTixPoapV1Meta> = (
   data,
 ) => {
-  return `tp1_${data.description}\nipfs:${data.cid}`
+  return `tp1_${data.cid}`
 }
 
 export const skeyBoxCertV1Serializer: SerializerFunc<SkeyBoxCertV1Meta> = (
