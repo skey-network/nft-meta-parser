@@ -78,6 +78,7 @@ console.log(
 
 - `<address>_<timestamp>` - is treated as `s01`
 - `1_<cid>` - is treated as `g01`
+- `v1_<address>_<globalId>_<metadata>` - is treated as `tt1`
 
 ### Interfaces
 
@@ -117,7 +118,7 @@ export interface Go2NFTTokenV1Meta extends BaseMeta {
   }
 }
 
-// tt1_<issuer>_<globalId>_<metadata | NOMETA>
+// tt1_<issuer>_<globalId>_<metadata | NOMETA> OR v1_<issuer>_<globalId>_<metadata | NOMETA>
 export interface SkeyTixTicketV1Meta extends BaseMeta {
   base: {
     project: 'skey-tix'

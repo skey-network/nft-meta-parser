@@ -18,7 +18,15 @@ export const go2NFTTokenReplacer: ReplacerFunc = (src) => {
   return `g01_${cid}`
 }
 
+export const skeyTixTicketReplacer: ReplacerFunc = (src) => {
+  const regex = new RegExp(`^v1_${ADDRESS_REGEX}_\\d{18}_.`)
+  if (!regex.test(src)) return src
+
+  return src.replace('v1_', 'tt1_')
+}
+
 export const replacers: ReplacerFunc[] = [
   skeyNetworkDeviceKeyReplacer,
   go2NFTTokenReplacer,
+  skeyTixTicketReplacer,
 ]

@@ -150,6 +150,22 @@ const cases: TestCase[] = [
       },
     },
   },
+  {
+    name: 'skey tix ticket old format',
+    input: 'v1_3KHCCUAKVMQ5A3DsEK9exmzSkSVh8PEmxku_000000222000000261_{}{}{}{}',
+    expected: {
+      base: {
+        project: 'skey-tix',
+        type: 'ticket',
+        version: 1,
+      },
+      data: {
+        issuer: '3KHCCUAKVMQ5A3DsEK9exmzSkSVh8PEmxku',
+        globalId: 222000000261,
+        meta: '{}{}{}{}',
+      },
+    },
+  },
 ]
 
 describe('Parse', () => {
