@@ -46,7 +46,7 @@ export interface SkeyTixTicketV1Meta extends BaseMeta {
   }
 }
 
-// tp1_<cid>
+// tp1_<cid> OR <...any>\nipfs<cid>
 export interface SkeyTixPoapV1Meta extends BaseMeta {
   base: {
     project: 'skey-tix'
@@ -58,7 +58,7 @@ export interface SkeyTixPoapV1Meta extends BaseMeta {
   }
 }
 
-// b01_<json(uid,companyName)>
+// b01_<json(uid,companyName)> OR <json(uid,companyName)>
 export interface SkeyBoxCertV1Meta extends BaseMeta {
   base: {
     project: 'skey-box'

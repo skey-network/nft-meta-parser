@@ -58,7 +58,7 @@ console.log(
 
 - `x` - Project identifier (lowercase ascii letter)
 - `y` - Nft type identifier (digit or lowercase ascii letter). Specific to project.
-- `z` - Content schema version. Specific to nft type.
+- `z` - Content schema version. Specific to nft type (digit or lowercase ascii letter)
 - `_` - Constant character
 - `*` - Rest of metadata (any characters, any length)
 
@@ -79,6 +79,8 @@ console.log(
 - `<address>_<timestamp>` - is treated as `s01`
 - `1_<cid>` - is treated as `g01`
 - `v1_<address>_<globalId>_<metadata>` - is treated as `tt1`
+- `<json(uid,companyName)>` - is treated as `b01`
+- `<...any>\nipfs<cid>` - is treated as `tp1`
 
 ### Interfaces
 
@@ -132,7 +134,7 @@ export interface SkeyTixTicketV1Meta extends BaseMeta {
   }
 }
 
-// tp1_<cid>
+// tp1_<cid> OR <...any>\nipfs<cid>
 export interface SkeyTixPoapV1Meta extends BaseMeta {
   base: {
     project: 'skey-tix'
@@ -144,7 +146,7 @@ export interface SkeyTixPoapV1Meta extends BaseMeta {
   }
 }
 
-// b01_<json(uid,companyName)>
+// b01_<json(uid,companyName)> OR <json(uid,companyName)>
 export interface SkeyBoxCertV1Meta extends BaseMeta {
   base: {
     project: 'skey-box'

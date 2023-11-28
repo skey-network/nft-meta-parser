@@ -1,4 +1,5 @@
-import { ADDRESS_REGEX, CID_REGEX } from './constants'
+import { ADDRESS_REGEX, CID_REGEX, PREFIX_REGEX } from './constants'
+import { tryParseJSON } from './utils'
 
 export type ReplacerFunc = (src: string) => string
 
@@ -25,8 +26,38 @@ export const skeyTixTicketReplacer: ReplacerFunc = (src) => {
   return src.replace('v1_', 'tt1_')
 }
 
+export const skeyBoxCertReplacer: ReplacerFunc = (src) => {
+  const parsed = tryParseJSON(src)
+  if (!parsed) return src
+
+  if (
+    typeof parsed.companyName !== 'string' ||
+    typeof parsed.uid !== 'string'
+  ) {
+    return src
+  }
+
+  return `b01_${src}`
+}
+
+export const skeyTixPoapReplacer: ReplacerFunc = (src) => {
+  const prefixRegex = new RegExp(`^${PREFIX_REGEX}.`)
+  const cidRegex = new RegExp(`\\nipfs:${CID_REGEX}$`, 'gm')
+
+  if (prefixRegex.test(src) || !cidRegex.test(src)) return src
+
+  const matches = src.match(cidRegex)
+  if (!matches || matches.length !== 1) return src
+
+  const cid = matches[0].replace('\nipfs:', '')
+
+  return `tp1_${cid}`
+}
+
 export const replacers: ReplacerFunc[] = [
   skeyNetworkDeviceKeyReplacer,
   go2NFTTokenReplacer,
   skeyTixTicketReplacer,
+  skeyBoxCertReplacer,
+  skeyTixPoapReplacer,
 ]

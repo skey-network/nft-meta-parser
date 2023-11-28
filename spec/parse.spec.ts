@@ -166,6 +166,43 @@ const cases: TestCase[] = [
       },
     },
   },
+  {
+    name: 'skey box old format',
+    input:
+      '{"uid":"7ed9a4f7-7f7d-44fe-b427-3fab1c4dbc0b","companyName":"elo elo 3 2 0"}',
+    expected: {
+      base: {
+        project: 'skey-box',
+        type: 'cert',
+        version: 1,
+      },
+      data: {
+        uid: '7ed9a4f7-7f7d-44fe-b427-3fab1c4dbc0b',
+        companyName: 'elo elo 3 2 0',
+      },
+    },
+  },
+  {
+    name: 'skey tix poap old format',
+    input:
+      'Wszyscy obecni\nipfs:Qmae81NL7n7GievunBehrtqUpbwJjvouQE3cHYcN3GSaH1',
+    expected: {
+      base: {
+        project: 'skey-tix',
+        type: 'poap',
+        version: 1,
+      },
+      data: {
+        cid: 'Qmae81NL7n7GievunBehrtqUpbwJjvouQE3cHYcN3GSaH1',
+      },
+    },
+  },
+  {
+    name: 'skey tix poap old format (should not match if has prefix)',
+    input:
+      'ee2_Wszyscy obecni\nipfs:Qmae81NL7n7GievunBehrtqUpbwJjvouQE3cHYcN3GSaH1',
+    expected: null,
+  },
 ]
 
 describe('Parse', () => {

@@ -9,9 +9,9 @@ export const getPrefixAndMeta = (
   return [prefix, meta]
 }
 
-export const tryParseJSON = (obj: any) => {
+export const tryParseJSON = (str: string) => {
   try {
-    return JSON.parse(obj)
+    return JSON.parse(str)
   } catch {
     return null
   }
