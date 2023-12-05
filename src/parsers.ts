@@ -55,3 +55,18 @@ export const skeyBoxCertV1Parser: ParserFunc = (src) => {
     companyName: obj.companyName,
   }
 }
+
+export const go2nftTokenV2Parser: ParserFunc = (src) => {
+  const regex = new RegExp(`^${ADDRESS_REGEX}_\\d*_${CID_REGEX}_*`)
+  if (!regex.test(src)) return null
+
+  const [issuer, index, cid, ...rest] = src.split('_')
+  const tag = rest.join('_')
+
+  return {
+    issuer,
+    index: Number(index),
+    cid,
+    tag: tag === 'NOTAG' ? null : tag,
+  }
+}

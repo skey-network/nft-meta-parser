@@ -203,6 +203,42 @@ const cases: TestCase[] = [
       'ee2_Wszyscy obecni\nipfs:Qmae81NL7n7GievunBehrtqUpbwJjvouQE3cHYcN3GSaH1',
     expected: null,
   },
+  {
+    name: 'go2nft v2 format',
+    input:
+      'g02_3MLmZi9qNH24qyTLmMAM1BWiBNtHqfpJ8do_11_Qmae81NL7n7GievunBehrtqUpbwJjvouQE3cHYcN3GSaH1_tag-12_3',
+    expected: {
+      base: {
+        project: 'go2nft',
+        type: 'token',
+        version: 2,
+      },
+      data: {
+        issuer: '3MLmZi9qNH24qyTLmMAM1BWiBNtHqfpJ8do',
+        index: 11,
+        cid: 'Qmae81NL7n7GievunBehrtqUpbwJjvouQE3cHYcN3GSaH1',
+        tag: 'tag-12_3',
+      },
+    },
+  },
+  {
+    name: 'go2nft v2 format (no tag)',
+    input:
+      'g02_3M6Nn7fMcCFP7yRRZyvk1VtxrGVepwYrySv_0_Qmae81NL7n7GievunBehrtqUpbwJjvouQE3cHYcN3GSaH2_NOTAG',
+    expected: {
+      base: {
+        project: 'go2nft',
+        type: 'token',
+        version: 2,
+      },
+      data: {
+        issuer: '3M6Nn7fMcCFP7yRRZyvk1VtxrGVepwYrySv',
+        index: 0,
+        cid: 'Qmae81NL7n7GievunBehrtqUpbwJjvouQE3cHYcN3GSaH2',
+        tag: null,
+      },
+    },
+  },
 ]
 
 describe('Parse', () => {

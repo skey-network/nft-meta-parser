@@ -73,6 +73,7 @@ console.log(
 - `b01` - SkeyBox certificate (version 1)
 - `tt1` - SkeyTix ticket (version 1)
 - `tp1` - SkeyTix occasional NFT (version 1)
+- `g02` - Go2NFT token (version 2)
 
 ### Special cases
 
@@ -159,12 +160,28 @@ export interface SkeyBoxCertV1Meta extends BaseMeta {
   }
 }
 
+// g02_<issuer>_<index>_<cid>_<tag>
+export interface Go2NFTTokenV2Meta extends BaseMeta {
+  base: {
+    project: 'go2nft'
+    type: 'token'
+    version: 2
+  }
+  data: {
+    issuer: string
+    index: number
+    cid: string
+    tag: string | null
+  }
+}
+
 export type Metadata =
   | SkeyNetworkDeviceKeyV1Meta
   | Go2NFTTokenV1Meta
   | SkeyTixTicketV1Meta
   | SkeyTixPoapV1Meta
   | SkeyBoxCertV1Meta
+  | Go2NFTTokenV2Meta
 
 ```
 <!-- INTERFACES_END -->

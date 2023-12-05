@@ -1,5 +1,6 @@
 import type {
   Go2NFTTokenV1Meta,
+  Go2NFTTokenV2Meta,
   Metadata,
   SkeyBoxCertV1Meta,
   SkeyNetworkDeviceKeyV1Meta,
@@ -39,4 +40,10 @@ export const skeyBoxCertV1Serializer: SerializerFunc<SkeyBoxCertV1Meta> = (
   data,
 ) => {
   return `b01_${JSON.stringify(data)}`
+}
+
+export const go2nftTokenV2Serializer: SerializerFunc<Go2NFTTokenV2Meta> = (
+  data,
+) => {
+  return `g02_${data.issuer}_${data.index}_${data.cid}_${data.tag ?? 'NOTAG'}`
 }

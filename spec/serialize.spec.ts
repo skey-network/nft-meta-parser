@@ -117,6 +117,42 @@ const cases: TestCase[] = [
     expected:
       'b01_{"uid":"35d2168d-e0e2-41f5-8499-c071c292e44b","companyName":"Moja firma testowa"}',
   },
+  {
+    name: 'go2nft v2 format',
+    input: {
+      base: {
+        project: 'go2nft',
+        type: 'token',
+        version: 2,
+      },
+      data: {
+        issuer: '3MLmZi9qNH24qyTLmMAM1BWiBNtHqfpJ8do',
+        index: 11,
+        cid: 'Qmae81NL7n7GievunBehrtqUpbwJjvouQE3cHYcN3GSaH1',
+        tag: 'tag-12_3',
+      },
+    },
+    expected:
+      'g02_3MLmZi9qNH24qyTLmMAM1BWiBNtHqfpJ8do_11_Qmae81NL7n7GievunBehrtqUpbwJjvouQE3cHYcN3GSaH1_tag-12_3',
+  },
+  {
+    name: 'go2nft v2 format (no tag)',
+    input: {
+      base: {
+        project: 'go2nft',
+        type: 'token',
+        version: 2,
+      },
+      data: {
+        issuer: '3M6Nn7fMcCFP7yRRZyvk1VtxrGVepwYrySv',
+        index: 0,
+        cid: 'Qmae81NL7n7GievunBehrtqUpbwJjvouQE3cHYcN3GSaH2',
+        tag: null,
+      },
+    },
+    expected:
+      'g02_3M6Nn7fMcCFP7yRRZyvk1VtxrGVepwYrySv_0_Qmae81NL7n7GievunBehrtqUpbwJjvouQE3cHYcN3GSaH2_NOTAG',
+  },
 ]
 
 describe('Serialize', () => {

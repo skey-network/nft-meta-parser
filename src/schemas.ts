@@ -60,6 +60,16 @@ export const SCHEMAS: Readonly<SchemaItem[]> = Object.freeze([
       version: 1,
     },
   },
+  {
+    prefix: 'g02',
+    parser: parsers.go2nftTokenV2Parser,
+    serializer: serializers.go2nftTokenV2Serializer,
+    base: {
+      project: 'go2nft',
+      type: 'token',
+      version: 2,
+    },
+  },
 ])
 
 export const getSchemaByPrefix = (prefix: string) =>
